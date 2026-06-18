@@ -391,26 +391,8 @@ python app.py
 # 👥 Autores
 
 ### Tamara Valeria Escobar Andrade
-**Ingeniería de Sistemas – CORHUILA**
-
-- Investigación y fundamentación teórica.
-- Diseño de la lógica del agente inteligente.
-- Desarrollo conceptual de la planificación Pomodoro.
-- Documentación técnica y redacción del informe.
-
 ### Santiago Rodríguez Bermeo
-**Ingeniería de Sistemas – CORHUILA**
-
-- Integración IoT.
-- Telemetría y ThingSpeak.
-- Validación y análisis de resultados.
-
 ### Thomas Trujillo Cerquera
-**Ingeniería de Sistemas – CORHUILA**
-
-- Diseño y ensamble del hardware.
-- Electrónica de potencia.
-- Integración de sensores y actuadores.
 
 ---
 
@@ -418,4 +400,4 @@ python app.py
 
 Este proyecto fue desarrollado con fines académicos y de investigación en la **Corporación Universitaria del Huila (CORHUILA)**.
 
-© 2025 – TST AI (Time Study Technology AI)
+© 2026 – TST AI (Time Study Technology AI)
