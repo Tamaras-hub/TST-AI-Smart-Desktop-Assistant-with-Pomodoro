@@ -12,7 +12,7 @@
 
 # 📖 Descripción
 
-**TST AI (Time Study Technology AI)** es un asistente inteligente de escritorio desarrollado para mejorar la productividad, la gestión del tiempo y las condiciones de confort durante el trabajo en computador.
+**TST AI** es un asistente inteligente de escritorio desarrollado para mejorar la productividad, la gestión del tiempo y las condiciones de confort durante el trabajo en computador.
 
 El sistema integra:
 
@@ -400,4 +400,4 @@ python app.py
 
 Este proyecto fue desarrollado con fines académicos y de investigación en la **Corporación Universitaria del Huila (CORHUILA)**.
 
-© 2026 – TST AI (Time Study Technology AI)
+© 2026 – TST AI
