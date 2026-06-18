@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente de Productividad — Pomodoro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <!-- Splash Screen de TST AI -->
+    <div id="splash-screen" class="splash-screen">
+        <h1 class="splash-text">TST AI</h1>
+    </div>
+
+    <header class="encabezado">
+        <h1>Asistente de Productividad</h1>
+        <p class="subtitulo">Agregá tareas, generá una propuesta y arrancá el Pomodoro.</p>
+    </header>
+
+    <main class="contenedor">
+
+        <!-- PANTALLA 1: TAREAS -->
+        <section class="pantalla tarjeta" id="pantalla-tareas">
+            <h2>Agregar tareas</h2>
+
+            <form id="form-tarea" class="form-tarea" autocomplete="off">
+                <label>
+                    Nombre
+                    <input type="text" id="input-nombre" placeholder="Ej. Estudiar Flask" required>
+                </label>
+
+                <div class="grupo-slider">
+                    <label for="input-dificultad">
+                        Dificultad (1 = fácil, 5 = muy difícil): <strong id="valor-dificultad">3</strong>
+                    </label>
+                    <input type="range" id="input-dificultad" min="1" max="5" value="3" required class="slider">
+                </div>
+
+                <div class="grupo-slider">
+                    <label for="input-concentracion">
+                        Concentración (1 = baja, 5 = alta): <strong id="valor-concentracion">3</strong>
+                    </label>
+                    <input type="range" id="input-concentracion" min="1" max="5" value="3" required class="slider">
+                </div>
+
+                <div class="grupo-fecha">
+                    <label>Fecha de entrega (Obligatorio)</label>
+                    <div class="fecha-dropdowns">
+                        <select id="select-dia" class="select-fecha">
+                            <option value="">Día</option>
+                        </select>
+                        <select id="select-mes" class="select-fecha">
+                            <option value="">Mes</option>
+                            <option value="01">Enero</option>
+                            <option value="02">Febrero</option>
+                            <option value="03">Marzo</option>
+                            <option value="04">Abril</option>
+                            <option value="05">Mayo</option>
+                            <option value="06">Junio</option>
+                            <option value="07">Julio</option>
+                            <option value="08">Agosto</option>
+                            <option value="09">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                        <select id="select-anio" class="select-fecha">
+                            <option value="">Año</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primario">
+                    Agregar tarea
+                </button>
+            </form>
+
+            <hr class="separador">
+
+            <h2>Lista de tareas pendientes</h2>
+
+            <!-- Barra de Progreso de Tareas (Requerimiento del Profesor) -->
+            <div id="contenedor-progreso" class="contenedor-progreso oculto">
+                <div class="progreso-info-texto">
+                    <span>Progreso de tareas completadas:</span>
+                    <strong id="progreso-porcentaje">0%</strong>
+                </div>
+                <div class="barra-progreso-fondo">
+                    <div id="barra-progreso-relleno" class="barra-progreso-relleno" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <p id="mensaje-vacio" class="mensaje-vacio">
+                Aún no hay tareas. Agregá la primera arriba.
+            </p>
+
+            <ul id="lista-tareas" class="lista-tareas"></ul>
+
+            <div class="acciones-lista">
+                <button id="btn-generar-propuesta" class="btn btn-secundario" disabled>
+                    Generar propuesta de planificación
+                </button>
+            </div>
+
+        </section>
+
+        <!-- PANTALLA 2: PROPUESTA -->
+        <section class="pantalla tarjeta oculto" id="pantalla-propuesta">
+            <h2>Propuesta de planificación</h2>
+
+            <!-- Indicador de fuente (Llama IA o fallback local) -->
+            <p id="propuesta-fuente" class="propuesta-fuente oculto"></p>
+
+            <div class="propuesta-cuerpo">
+                <p><strong>Tarea recomendada:</strong> <span id="propuesta-tarea">—</span></p>
+                <p><strong>Dificultad:</strong> <span id="propuesta-dificultad">—</span></p>
+                <p><strong>Concentración:</strong> <span id="propuesta-concentracion">—</span></p>
+                <p><strong>Puntaje:</strong> <span id="propuesta-puntaje">—</span></p>
+                <p><strong>Trabajo propuesto:</strong> <span id="propuesta-trabajo">—</span> min</p>
+                <p><strong>Descanso propuesto:</strong> <span id="propuesta-descanso">—</span> min</p>
+
+                <p class="mensaje-explicativo" id="propuesta-mensaje">—</p>
+            </div>
+
+            <!-- Lista de tareas priorizadas por el agente IA -->
+            <div class="propuesta-prioridades">
+                <h3>Orden de prioridad</h3>
+                <div id="propuesta-lista-prioridades" class="lista-prioridades"></div>
+            </div>
+
+            <div class="acciones-propuesta">
+                <button id="btn-aceptar-propuesta" class="btn btn-primario">
+                    Aceptar e iniciar
+                </button>
+
+                <button id="btn-ajustar-manual" class="btn btn-secundario">
+                    Ajustar manualmente
+                </button>
+
+                <button id="btn-volver-tareas" class="btn btn-secundario">
+                    Volver a tareas
+                </button>
+            </div>
+
+            <div id="bloque-ajuste" class="bloque-ajuste oculto">
+                <h3>Ajuste manual</h3>
+
+                <label>
+                    Minutos de trabajo
+                    <input type="number" id="input-trabajo-manual" min="1" max="120" value="25">
+                </label>
+
+                <label>
+                    Minutos de descanso
+                    <input type="number" id="input-descanso-manual" min="1" max="60" value="5">
+                </label>
+
+                <button id="btn-iniciar-manual" class="btn btn-primario">
+                    Iniciar con estos valores
+                </button>
+            </div>
+        </section>
+
+
+        <!-- PANTALLA 3: EJECUCIÓN -->
+        <section class="pantalla tarjeta oculto" id="pantalla-ejecucion">
+            <h2>Pomodoro en ejecución</h2>
+
+            <div class="ejecucion-info">
+                <p>
+                    <strong>Modo:</strong>
+                    <span id="exec-modo" class="badge badge-idle">IDLE</span>
+                </p>
+
+                <p>
+                    <strong>Tarea actual:</strong>
+                    <span id="exec-tarea">—</span>
+                </p>
+
+                <p class="tiempo-restante">
+                    <strong>Tiempo restante:</strong>
+                    <span id="exec-tiempo">00:00</span>
+                </p>
+            </div>
+
+            <!-- Actividades de descanso en ejecución (solo se muestra en DESCANSO) -->
+            <div id="bloque-actividades-ejecucion" class="propuesta-descanso-actividades oculto">
+                <h3>Sugerencias para tu descanso</h3>
+                <ul id="ejecucion-actividades-descanso" class="lista-actividades"></ul>
+            </div>
+
+            <div class="acciones-ejecucion">
+                <button id="btn-iniciar" class="btn btn-primario" disabled>
+                    Iniciar
+                </button>
+
+                <button id="btn-pausar" class="btn btn-secundario" disabled>
+                    Pausar
+                </button>
+
+                <button id="btn-reanudar" class="btn btn-secundario" disabled>
+                    Reanudar
+                </button>
+
+                <button id="btn-finalizar" class="btn btn-peligro" disabled>
+                    Skip
+                </button>
+
+                <button id="btn-volver-desde-ejecucion" class="btn btn-secundario">
+                    Volver
+                </button>
+            </div>
+        </section>
+
+        <!-- PANTALLA 4: FINAL -->
+
+        <section class="pantalla tarjeta oculto" id="pantalla-final">
+            <h2>Ciclo terminado</h2>
+
+            <p class="mensaje-explicativo">
+                Terminó el bloque Pomodoro. ¿La tarea ya quedó finalizada?
+            </p>
+
+            <div class="acciones-propuesta">
+                <button id="btn-continuar-bloque" class="btn btn-secundario">
+                    Continuar otro bloque
+                </button>
+
+                <button id="btn-marcar-terminada" class="btn btn-primario">
+                    Marcar tarea como terminada
+                </button>
+
+                <button id="btn-final-volver-tareas" class="btn btn-secundario">
+                    Volver sin terminar
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}?v=4" defer></script>
+</body>
+
+</html>

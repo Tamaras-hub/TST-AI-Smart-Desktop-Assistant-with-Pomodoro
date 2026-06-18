@@ -1,0 +1,828 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ============================================================
+   styles.css — Premium Dark Mode Theme
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #0f172a;
+    background-image: 
+        radial-gradient(at 40% 20%, rgba(30, 58, 138, 0.3) 0, transparent 50%), 
+        radial-gradient(at 80% 0%, rgba(14, 116, 144, 0.3) 0, transparent 50%), 
+        radial-gradient(at 0% 50%, rgba(139, 92, 246, 0.15) 0, transparent 50%);
+    background-attachment: fixed;
+    color: #e2e8f0;
+    line-height: 1.6;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
+
+.encabezado {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    animation: fadeInDown 0.6s ease-out;
+}
+
+.encabezado h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+    background: linear-gradient(to right, #c084fc, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitulo {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.contenedor {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.tarjeta {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tarjeta h2 {
+    color: #f8fafc;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.75rem;
+}
+
+.tarjeta h3 {
+    font-size: 1.1rem;
+    color: #e2e8f0;
+    margin: 1.5rem 0 0.75rem;
+    font-weight: 500;
+}
+
+.oculto {
+    display: none !important;
+}
+
+/* ---------- Formulario ---------- */
+.form-tarea {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-tarea label,
+.bloque-ajuste label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    gap: 0.4rem;
+    font-weight: 400;
+}
+
+.form-tarea input,
+.bloque-ajuste input {
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: rgba(15, 23, 42, 0.5);
+    color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.form-tarea input:focus,
+.bloque-ajuste input:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+    background: rgba(15, 23, 42, 0.8);
+}
+
+.grupo-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.grupo-slider label {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    font-weight: 400;
+}
+
+.grupo-slider strong {
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+input[type="range"].slider {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+    padding: 0;
+    border: none;
+}
+
+input[type="range"].slider:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+input[type="range"].slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+input[type="range"].slider::-webkit-slider-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #c084fc, #8b5cf6);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    transition: transform 0.1s ease;
+}
+
+input[type="range"].slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+.separador {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+    margin: 2rem 0;
+}
+
+/* ---------- Lista Tareas ---------- */
+.mensaje-vacio {
+    color: #64748b;
+    font-weight: 300;
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.lista-tareas {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.tarea-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    gap: 1rem;
+    transition: all 0.2s ease;
+}
+
+.tarea-item:hover {
+    transform: translateY(-2px);
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tarea-item.seleccionada {
+    background: rgba(56, 189, 248, 0.08);
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 1px #38bdf8, 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tarea-info {
+    flex: 1;
+    cursor: pointer;
+}
+
+.tarea-nombre {
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: #f8fafc;
+}
+
+.tarea-meta {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 0.25rem;
+}
+
+.acciones-lista {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* ---------- Propuesta ---------- */
+.propuesta-cuerpo p {
+    margin-bottom: 0.5rem;
+    color: #cbd5e1;
+}
+
+.propuesta-cuerpo strong {
+    color: #f8fafc;
+    font-weight: 500;
+}
+
+.mensaje-explicativo {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: rgba(245, 158, 11, 0.1);
+    border-left: 4px solid #fbbf24;
+    border-radius: 8px;
+    color: #fcd34d;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.acciones-propuesta {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.bloque-ajuste {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+/* ---------- Ejecución ---------- */
+.ejecucion-info p {
+    margin-bottom: 0.5rem;
+    color: #cbd5e1;
+}
+
+.tiempo-restante {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 2rem 1rem;
+    margin: 1.5rem 0;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#exec-tiempo {
+    font-size: 3.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: #38bdf8;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    margin-top: 0.5rem;
+    line-height: 1;
+}
+
+.acciones-ejecucion {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    justify-content: center;
+}
+
+/* ---------- Badges ---------- */
+.badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.badge-idle    { background: #475569; }
+.badge-work    { background: #10b981; box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
+.badge-break   { background: #0ea5e9; box-shadow: 0 0 10px rgba(14, 165, 233, 0.3); }
+.badge-paused  { background: #f59e0b; }
+
+/* ---------- Botones ---------- */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(100%);
+}
+
+.btn-primario {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primario:hover:not(:disabled) {
+    background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-secundario {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secundario:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-peligro {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.btn-peligro:hover:not(:disabled) {
+    background: rgba(239, 68, 68, 0.25);
+    transform: translateY(-2px);
+}
+
+.btn-eliminar {
+    background: transparent;
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-eliminar:hover { 
+    background: rgba(239, 68, 68, 0.1); 
+    border-color: rgba(239, 68, 68, 0.5);
+}
+
+/* ---------- Animaciones ---------- */
+.pantalla {
+    animation: aparecerPantalla 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes aparecerPantalla {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#exec-tiempo {
+    animation: pulsoTiempo 2s ease-in-out infinite;
+}
+
+@keyframes pulsoTiempo {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+}
+
+/* ---------- Agente IA — Fuente de propuesta ---------- */
+.propuesta-fuente {
+    display: inline-flex !important;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    margin-bottom: 1.25rem;
+}
+
+.fuente-ia {
+    background: rgba(168, 85, 247, 0.15);
+    color: #d8b4fe;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.fuente-local {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fcd34d;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+/* ---------- Lista de prioridades ---------- */
+.propuesta-prioridades {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lista-prioridades {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.prioridad-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+.prioridad-item:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.prioridad-num {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #c084fc;
+    background: rgba(168, 85, 247, 0.15);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    min-width: 2.5rem;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.prioridad-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.prioridad-nombre {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #f8fafc;
+}
+
+.prioridad-razon {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    line-height: 1.4;
+}
+
+/* ---------- Actividades de descanso ---------- */
+.propuesta-descanso-actividades {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background: rgba(14, 165, 233, 0.05);
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    border-radius: 12px;
+}
+
+.propuesta-descanso-actividades h3 {
+    margin-top: 0;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.propuesta-descanso-actividades h3::before {
+    content: "✨";
+}
+
+.lista-actividades {
+    margin-top: 0.75rem;
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.lista-actividades li {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    padding: 0.2rem 0;
+}
+
+.lista-actividades li::marker {
+    color: #38bdf8;
+}
+
+/* ---------- Splash Screen TST AI ---------- */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0f172a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeOutSplash 0.5s ease-in-out 1.5s forwards;
+    pointer-events: none; /* Allows clicking through it once it starts fading */
+}
+
+.splash-text {
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    background: linear-gradient(to right, #38bdf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulseGlow 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeOutSplash {
+    0% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(0.9); opacity: 0; }
+    20% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 20px rgba(56, 189, 248, 0.5); }
+    100% { transform: scale(1); opacity: 1; text-shadow: 0 0 40px rgba(192, 132, 252, 0.8); }
+}
+
+/* ---------- Estilos de Tareas Terminadas y Checkboxes ---------- */
+.tarea-checkbox {
+    width: 20px;
+    height: 20px;
+    accent-color: #10b981;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(15, 23, 42, 0.6);
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.tarea-checkbox:hover {
+    transform: scale(1.1);
+}
+
+.tarea-item.terminada {
+    opacity: 0.55;
+    background: rgba(15, 23, 42, 0.2);
+    border-color: rgba(16, 185, 129, 0.15);
+    box-shadow: none;
+}
+
+.tarea-item.terminada:hover {
+    transform: none;
+    background: rgba(15, 23, 42, 0.2);
+    border-color: rgba(16, 185, 129, 0.15);
+}
+
+.tarea-item.terminada .tarea-nombre {
+    text-decoration: line-through;
+    color: #64748b;
+}
+
+.tarea-item.terminada .tarea-info {
+    cursor: default;
+}
+
+/* ---------- Barra de Progreso de Tareas ---------- */
+.contenedor-progreso {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.progreso-info-texto {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+}
+
+.progreso-info-texto strong {
+    color: #10b981;
+    font-weight: 600;
+}
+
+.barra-progreso-fondo {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.barra-progreso-relleno {
+    height: 100%;
+    background: linear-gradient(to right, #10b981, #059669);
+    border-radius: 6px;
+    width: 0%;
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+/* ---------- Panel IoT de Sensores ---------- */
+.panel-iot {
+    background: rgba(15, 23, 42, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+}
+
+.panel-iot h3 {
+    margin-top: 0 !important;
+    margin-bottom: 1rem;
+    color: #38bdf8;
+    font-size: 1.15rem;
+}
+
+.iot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.iot-card {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.25rem;
+}
+
+.iot-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.iot-val {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #f8fafc;
+}
+
+.iot-card-arreglo {
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px dashed rgba(16, 185, 129, 0.25);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.iot-arreglo-visual {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: monospace;
+    font-size: 1.25rem;
+    color: #10b981;
+    font-weight: 700;
+}
+
+.iot-arreglo-valores {
+    color: #34d399;
+    letter-spacing: 1px;
+}
+
+.iot-simbolo {
+    color: #059669;
+}
+
+.iot-nota {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.4;
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 560px) {
+    .iot-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* ---------- Selector de Fecha con Dropdowns ---------- */
+.grupo-fecha {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.grupo-fecha label {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    font-weight: 400;
+}
+
+.fecha-dropdowns {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.select-fecha {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: rgba(15, 23, 42, 0.5) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23cbd5e1' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E") no-repeat right 1rem center;
+    background-size: 12px;
+    color: #f8fafc;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.select-fecha:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+    background-color: rgba(15, 23, 42, 0.8);
+}
+
+.select-fecha option {
+    background-color: #0f172a;
+    color: #f8fafc;
+}
